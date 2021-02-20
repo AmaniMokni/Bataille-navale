@@ -1,6 +1,7 @@
 package ensta;
 
 import ensta.exceptions.Chevauchement;
+import ensta.exceptions.DejaTouche;
 import ensta.exceptions.HorsGrille;
 import ensta.exceptions.OrientationNotFound;
 import ensta.navires.AbstractShip;
@@ -165,5 +166,16 @@ public class Board implements IBoard {
     }
     public void setShipState(ShipState S, int x,int y){
         this.tab_navires[x][y]=S;
+    }
+    public Hit sendHit(int x,int y) throws DejaTouche {
+        if(this.hasShip(x,y))
+        { this.tab_navires[x][y].addStrike();
+        if(this.tab_navires[x][y].isSunk())
+        {
+            return Hit.fromInt(this.tab_navires[x][y].getShip().getTailleNavire());
+        }
+           else  return Hit.STRIKE;
+        }
+        else return Hit.MISS;
     }
 }

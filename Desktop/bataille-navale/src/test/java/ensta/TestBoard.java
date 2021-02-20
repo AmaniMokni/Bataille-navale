@@ -23,7 +23,10 @@ public class TestBoard {
         Carrier C5 = new Carrier(ORIENTATION.SOUTH);
         try {
             board1.putShip(C1,5,5);
+            board1.sendHit(5,5);
+            board1.sendHit(0,0);
             board1.print();
+
         }
         catch(Exception e){}
         try {

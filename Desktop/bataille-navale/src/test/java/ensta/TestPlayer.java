@@ -12,6 +12,8 @@ public class TestPlayer {
         AbstractShip B = new Battleship();
         AbstractShip C = new Carrier();
 
+        AbstractShip C1 = new Carrier(ORIENTATION.SOUTH);
+
         ListeNavire.add(D);
         ListeNavire.add(S1);
         ListeNavire.add(S2);
@@ -21,9 +23,21 @@ public class TestPlayer {
         Board b1 = new Board("Joueur 1");
         Board b2 = new Board("Joueur 2");
 
-        Player p = new Player(b1, b2 , ListeNavire);
 
-        p.putShips();
+        Player p1 = new Player(b1, b2 , ListeNavire);
+        p1.putShips();
+
+        try{
+            b2.putShip(C1,1,1);
+            int[] coords={};
+            p1.sendHit(coords);
+            p1.board.print();
+            p1.opponentBoard.print();
+            p1.sendHit(coords);
+            p1.board.print();
+            p1.opponentBoard.print();
+        }
+        catch (Exception e){}
 
     }
 
