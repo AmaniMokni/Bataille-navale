@@ -35,4 +35,8 @@ public AbstractShip(String typeNavire,Character label, int tailleNavire, ORIENTA
         this.tailleNavire=tailleNavire;
         this.orientation=orientation;
 }
+public AbstractShip(String typeNavire,Character label, int tailleNavire){
+    this.typeNavire=typeNavire;
+    this.label=label;
+    this.tailleNavire=tailleNavire;}
 }
