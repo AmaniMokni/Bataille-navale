@@ -10,15 +10,15 @@ et d’un tableau 2D de boolean pour les frappes. */
 public class Board implements IBoard {
     private String nom;
     private int taille;
-    private Character[][] tab_navires;
-    private boolean[][] tab_frappes;
+    private ShipState[][] tab_navires;
+    private Boolean[][] tab_frappes;
 
     /* Constructeur valué prenant en arguments le nom et la taille de la grille */
     public Board(String nom, int taille) {
         this.nom = nom;
         this.taille = taille;
-        tab_navires = new Character[taille][taille];
-        tab_frappes = new boolean[taille][taille];
+        tab_navires = new ShipState[taille][taille];
+        tab_frappes = new Boolean[taille][taille];
     }
 
     /* Constructeur avec la taille par défaut =10 */
@@ -71,10 +71,13 @@ public class Board implements IBoard {
             System.out.print(i + 1);
             System.out.print('\t');
             for (int j = 0; j < n; j++) {
-                if (!tab_frappes[i][j]) {
+                if (tab_frappes[i][j]==null) {
                     System.out.print('.');
-                } else {
-                    System.out.print(tab_frappes[i][j]);
+                } else if (!tab_frappes[i][j]){
+                    System.out.print(ColorUtil.colorize("X", ColorUtil.Color.WHITE));
+                }
+                else {
+                    System.out.print(ColorUtil.colorize("X", ColorUtil.Color.RED));
                 }
                 System.out.print('\t');
             }
@@ -109,7 +112,8 @@ public class Board implements IBoard {
                 for (int i = 0; i < ship.getTailleNavire(); i++) {
                     if(hasShip(x-i,y))
                         throw new Chevauchement();
-                    tab_navires[x - i][y] = ship.getLabel();
+                    ShipState SS= new ShipState(ship);
+                    tab_navires[x - i][y] = SS;
                 }
                 break;
             case SOUTH:
@@ -118,7 +122,8 @@ public class Board implements IBoard {
                 for (int i = 0; i < ship.getTailleNavire(); i++) {
                     if(hasShip(x+i,y))
                         throw new Chevauchement();
-                    tab_navires[x + i][y] = ship.getLabel();
+                    ShipState SS= new ShipState(ship);
+                    tab_navires[x + i][y] = SS;
                 }
                 break;
             case EAST:
@@ -127,7 +132,8 @@ public class Board implements IBoard {
                 for (int i = 0; i < ship.getTailleNavire(); i++) {
                     if(hasShip(x,y+i))
                         throw new Chevauchement();
-                    tab_navires[x][y + i] = ship.getLabel();
+                    ShipState SS= new ShipState(ship);
+                    tab_navires[x][y + i] = SS;
                 }
                 break;
             case WEST:
@@ -137,7 +143,8 @@ public class Board implements IBoard {
                 for (int i = 0; i < ship.getTailleNavire(); i++) {
                     if(hasShip(x,y-i))
                         throw new Chevauchement();
-                    tab_navires[x][y - i] = ship.getLabel();
+                    ShipState SS= new ShipState(ship);
+                    tab_navires[x][y - i] = SS;
                 }
                 break;
             default:
@@ -152,5 +159,11 @@ public class Board implements IBoard {
     }
     public Boolean getHit(int x, int y){
         return this.tab_frappes[x][y];
+    }
+    public ShipState getShipState(int x,int y){
+        return this.tab_navires[x][y];
+    }
+    public void setShipState(ShipState S, int x,int y){
+        this.tab_navires[x][y]=S;
     }
 }
