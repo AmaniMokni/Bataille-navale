@@ -38,6 +38,7 @@ public enum Hit {
     public String toString() {
         return this.label;
     }
+
 };
 
 

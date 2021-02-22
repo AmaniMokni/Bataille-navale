@@ -113,9 +113,12 @@ public class Board implements IBoard {
                 for (int i = 0; i < ship.getTailleNavire(); i++) {
                     if(hasShip(x-i,y))
                         throw new Chevauchement();
+                }
+                for (int i = 0; i < ship.getTailleNavire(); i++) {
                     ShipState SS= new ShipState(ship);
                     tab_navires[x - i][y] = SS;
                 }
+
                 break;
             case SOUTH:
                 if (x+ship.getTailleNavire()>this.getSize()){
@@ -123,6 +126,8 @@ public class Board implements IBoard {
                 for (int i = 0; i < ship.getTailleNavire(); i++) {
                     if(hasShip(x+i,y))
                         throw new Chevauchement();
+                }
+                for (int i = 0; i < ship.getTailleNavire(); i++) {
                     ShipState SS= new ShipState(ship);
                     tab_navires[x + i][y] = SS;
                 }
@@ -133,8 +138,11 @@ public class Board implements IBoard {
                 for (int i = 0; i < ship.getTailleNavire(); i++) {
                     if(hasShip(x,y+i))
                         throw new Chevauchement();
+                }
+                for (int i = 0; i < ship.getTailleNavire(); i++) {
                     ShipState SS= new ShipState(ship);
                     tab_navires[x][y + i] = SS;
+
                 }
                 break;
             case WEST:
@@ -144,6 +152,8 @@ public class Board implements IBoard {
                 for (int i = 0; i < ship.getTailleNavire(); i++) {
                     if(hasShip(x,y-i))
                         throw new Chevauchement();
+                }
+                for (int i = 0; i < ship.getTailleNavire(); i++) {
                     ShipState SS= new ShipState(ship);
                     tab_navires[x][y - i] = SS;
                 }
@@ -170,6 +180,7 @@ public class Board implements IBoard {
     public Hit sendHit(int x,int y) throws DejaTouche {
         if(this.hasShip(x,y))
         { this.tab_navires[x][y].addStrike();
+
         if(this.tab_navires[x][y].isSunk())
         {
             return Hit.fromInt(this.tab_navires[x][y].getShip().getTailleNavire());

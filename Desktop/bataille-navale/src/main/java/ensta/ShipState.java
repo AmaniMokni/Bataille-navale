@@ -12,6 +12,7 @@ ShipState(AbstractShip Ship){
     public void addStrike() throws DejaTouche {
 
             if(this.add < 1){
+                shipRef.addStrike();
                 this.struck = true;
                 ++(this.add);
             }
@@ -20,8 +21,10 @@ ShipState(AbstractShip Ship){
 
     }
     public boolean isStruck(){
-        return this.struck;
-    }
+
+    return this.struck;
+
+}
     public  String toString(){
         if(this.struck){
             return ColorUtil.colorize(String.valueOf(this.shipRef.getLabel()),ColorUtil.Color.RED);
@@ -30,9 +33,13 @@ ShipState(AbstractShip Ship){
         }
     }
     public boolean isSunk(){
-        return this.shipRef.isSunk();
+
+    return this.shipRef.isSunk();
+
     }
     public  AbstractShip getShip(){
-        return this.shipRef;
+
+    return this.shipRef;
+
     }
 }

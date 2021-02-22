@@ -53,6 +53,7 @@ public void addStrike(){
         ++strikeCount;
 }
 public boolean isSunk(){
+
     return strikeCount >= this.tailleNavire;
 }
 }
