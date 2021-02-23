@@ -6,9 +6,11 @@ import ensta.exceptions.HorsGrille;
 import ensta.exceptions.OrientationNotFound;
 import ensta.navires.AbstractShip;
 
+import java.io.Serializable;
+
 /* La classe ensta.Board: composée d’un nom, d’un tableau 2D de character pour les ensta.navires
 et d’un tableau 2D de boolean pour les frappes. */
-public class Board implements IBoard {
+public class Board implements IBoard , Serializable {
     private String nom;
     private int taille;
     private ShipState[][] tab_navires;

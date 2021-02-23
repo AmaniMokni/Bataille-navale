@@ -1,6 +1,8 @@
 package ensta.navires;
 
-public abstract class AbstractShip {
+import java.io.Serializable;
+
+public abstract class AbstractShip implements Serializable {
     protected Character label;
     protected String typeNavire;
     protected int tailleNavire;

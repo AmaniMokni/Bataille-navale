@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 import ensta.navires.*;
 
-public class Game {
+public class Game implements  Serializable{
 
     /* ***
      * Constante
@@ -45,8 +45,16 @@ public class Game {
              // place player ships
             player1.putShips();
             player2.putShips();
+        }else {
+            try {
+                ObjectInputStream objectInputStream =  new ObjectInputStream(new FileInputStream(SAVE_FILE));
+                return (Game) objectInputStream.readObject();
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
         return this;
+
     }
     public Game initMultiJoueur() {
         if (!loadSave()) {
@@ -70,6 +78,13 @@ public class Game {
             // place player ships
             player1.putShips();
             player2.putShips();
+        }else {
+            try {
+                ObjectInputStream objectInputStream =  new ObjectInputStream(new FileInputStream(SAVE_FILE));
+                return (Game) objectInputStream.readObject();
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
         return this;
     }
@@ -128,31 +143,33 @@ public class Game {
 
 
     private void save() {
-        /*
+
         try {
             // TODO bonus 2 : uncomment
-            //  if (!SAVE_FILE.exists()) {
-            //      SAVE_FILE.getAbsoluteFile().getParentFile().mkdirs();
-            //  }
+              if (!SAVE_FILE.exists()) {
+               SAVE_FILE.getAbsoluteFile().getParentFile().mkdirs();
+              }
 
             // TODO bonus 2 : serialize players
-
+            ObjectOutputStream objectoutputstream =  new ObjectOutputStream(new FileOutputStream(SAVE_FILE));
+            objectoutputstream.writeObject(this) ;
         } catch (IOException e) {
             e.printStackTrace();
-        }        */
+        }
     }
 
     private boolean loadSave() {
-        /*
+
         if (SAVE_FILE.exists()) {
             try {
                 // TODO bonus 2 : deserialize players
-
+                ObjectInputStream objectInputStream =  new ObjectInputStream(new FileInputStream(SAVE_FILE));
+                objectInputStream.readObject() ;
                 return true;
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
-        }               */
+        }
         return false;
     }
 

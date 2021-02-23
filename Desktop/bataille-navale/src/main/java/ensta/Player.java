@@ -4,7 +4,7 @@ import java.util.List;
 import ensta.navires.AbstractShip;
 import ensta.navires.ORIENTATION;
 
-public class Player {
+public class Player implements Serializable {
     /* **
      * Attributs
      */

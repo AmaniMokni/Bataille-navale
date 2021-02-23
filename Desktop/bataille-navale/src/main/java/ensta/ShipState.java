@@ -1,7 +1,10 @@
 package ensta;
 import ensta.exceptions.DejaTouche;
 import ensta.navires.AbstractShip;
-public class ShipState {
+
+import java.io.Serializable;
+
+public class ShipState implements Serializable {
     private AbstractShip shipRef;
     private boolean struck=false;
     private int add=0;

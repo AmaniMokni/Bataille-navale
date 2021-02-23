@@ -46,11 +46,11 @@ public class TestGame {
         String choixString = sc.nextLine();
         int choix = Integer.parseInt(choixString);
         if(choix == 1){
-            game.init();
+            game = game.init();
             game.run();
         }
         else if(choix == 2){
-            game.initMultiJoueur();
+            game = game.initMultiJoueur();
             game.run();
         }
         else System.out.println("Veuillez entrer un choix valide");
