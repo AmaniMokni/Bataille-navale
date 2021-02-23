@@ -1,6 +1,7 @@
 package ensta;
 import ensta.navires.*;
 public class TestGame {
+    /*
     public static void main(String[] args) {
         Board board = new Board("Grille de test",8);
         board.print();
@@ -32,6 +33,12 @@ public class TestGame {
 
 
         }
+    }*/
+    public static void main(String[] args) {
+        Game game = new Game();
+        game.init();
+        game.run();
+
     }
     private static void sleep(int ms) {
         try {

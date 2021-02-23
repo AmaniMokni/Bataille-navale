@@ -64,15 +64,15 @@ public class BattleShipsAI implements Serializable {
     public void putShips(AbstractShip ships[]) {
         int x=0, y=0;
         ORIENTATION o;
-        Random rnd = new Random();
+        Random rand = new Random();
         ORIENTATION[] orientations = ORIENTATION.values();
 
         for (AbstractShip s : ships) {
             while(true){
                 // TODO use Random to pick a random x, y & orientation
-                x = rnd.nextInt(this.size);
-                y = rnd.nextInt(this.size);
-                o = orientations[rnd.nextInt(orientations.length)];
+                x = rand.nextInt(this.size);
+                y = rand.nextInt(this.size);
+                o = orientations[rand.nextInt(orientations.length)];
                 s.setOrientation(o);
                 try{
                     if(canPutShip(s, x, y)) {

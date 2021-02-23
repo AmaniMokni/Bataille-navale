@@ -169,12 +169,15 @@ public class Board implements IBoard {
         this.tab_frappes[x][y]=hit;
     }
     public Boolean getHit(int x, int y){
+
         return this.tab_frappes[x][y];
     }
     public ShipState getShipState(int x,int y){
+
         return this.tab_navires[x][y];
     }
     public void setShipState(ShipState S, int x,int y){
+
         this.tab_navires[x][y]=S;
     }
     public Hit sendHit(int x,int y) throws DejaTouche {
