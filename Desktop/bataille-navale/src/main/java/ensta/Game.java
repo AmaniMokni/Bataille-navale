@@ -48,6 +48,32 @@ public class Game {
         }
         return this;
     }
+    public Game initMultiJoueur() {
+        if (!loadSave()) {
+            // init attributes
+            System.out.println("entre le nom du 1er joueur");
+            // TODO use a scanner to read player name
+            Scanner sc = new Scanner(System.in);
+            String PlayerName1 = sc.nextLine();
+            System.out.println("entre le nom du 2eme joueur");
+            String PlayerName2 = sc.nextLine();
+            // TODO init boards
+            Board b1, b2;
+            b1 = new Board(PlayerName1);
+            b2 = new Board(PlayerName2);
+            // TODO init this.player1 & this.player2
+            List<AbstractShip> shipsPlayer1 = createDefaultShips();
+            player1 = new Player(b1, b2, shipsPlayer1);
+            List<AbstractShip> shipsPlayer2 = createDefaultShips();
+            player2 = new Player(b2, b1, shipsPlayer2);
+            b1.print();
+            // place player ships
+            player1.putShips();
+            player2.putShips();
+        }
+        return this;
+    }
+
 
     /* ***
      * Méthodes

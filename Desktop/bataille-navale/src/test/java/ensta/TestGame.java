@@ -1,5 +1,8 @@
 package ensta;
 import ensta.navires.*;
+
+import java.util.Scanner;
+
 public class TestGame {
     /*
     public static void main(String[] args) {
@@ -36,8 +39,22 @@ public class TestGame {
     }*/
     public static void main(String[] args) {
         Game game = new Game();
-        game.init();
-        game.run();
+        System.out.println("Bienvenue dans notre jeu Bataille Navale");
+        System.out.println(" 1- \t Jeux 1 player");
+        System.out.println(" 2- \t Jeux 2 player");
+        Scanner sc = new Scanner(System.in);
+        String choixString = sc.nextLine();
+        int choix = Integer.parseInt(choixString);
+        if(choix == 1){
+            game.init();
+            game.run();
+        }
+        else if(choix == 2){
+            game.initMultiJoueur();
+            game.run();
+        }
+        else System.out.println("Veuillez entrer un choix valide");
+
 
     }
     private static void sleep(int ms) {
